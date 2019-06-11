@@ -29,9 +29,7 @@ const TrumpApp = () => {
   }, []);
 
   return (
-    <TrumpApp>
-      <h1>hello world</h1>
-    </TrumpApp>
+    <h1>hello world</h1>
   );
 }
 

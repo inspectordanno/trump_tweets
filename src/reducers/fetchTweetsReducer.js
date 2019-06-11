@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const fetchTweetsReducerDefaultState = {
   isLoading: false,
   isError: false,
@@ -17,7 +19,12 @@ const fetchTweetsReducer = (state = fetchTweetsReducerDefaultState, action) => {
         ...state,
         isLoading: false,
         isError: false,
-        data: action.payload
+        data: action.payload.map((tweet) => {
+          return {
+            ...tweet,
+            moment: moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z YYYY')
+          }
+        })
       };
     case 'FETCH_TWEETS_FAILURE':
       return {
@@ -26,7 +33,8 @@ const fetchTweetsReducer = (state = fetchTweetsReducerDefaultState, action) => {
         isError: true
       };
     default:
-      throw new Error();
+      // throw new Error();
+      return state;
   }
 }
 
