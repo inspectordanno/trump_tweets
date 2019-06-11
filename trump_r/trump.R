@@ -8,7 +8,12 @@ data("presidential_debates_2012")
 sentences <- tweets %>%
   get_sentences()
 
-sentiment <- sentiment(sentences)
+sentiment <- sentiment(sentences) %>%
+  select('source', 'text', 'created_at', 'retweet_count', 'favorite_count', 'word_count', 'sentiment')
+
+write_csv(sentiment, './tweets_cleaned.csv')
+
+
 sentimentWords <- extract_emotion_terms(sentences)
 emotion <- emotion(sentences)
 profanity <- profanity(sentences)
