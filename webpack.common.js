@@ -37,15 +37,5 @@ module.exports = {
       filename: 'index.html'
     }),
     new WebpackMd5Hash(),
-    new CopyWebpackPlugin(
-    [ 
-      { from: './src/transaction_data/lombra_sample.csv', to: './data' },
-      { from: './src/transaction_data/whaples_sample.csv', to: './data' },
-      { from: './src/images', to: './images' },
-      { from: './attribution.txt', to: './' },
-      // { from: './dist', to: '../distrust_pennies'}
-    ], 
-    { debug: 'info' }
-    )
   ],
 };
