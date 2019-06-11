@@ -1,22 +1,16 @@
-import React, { useEffect, useReducer } from 'react';
-import TrumpContext from '../context/trump_context';
-import { csv } from 'd3-fetch';
-import tweetsReducer from '../reducers/tweetsReducer';
+import React, { useEffect } from 'react';
+import tweets from '../../trump_r/tweets_cleaned.json';
+import { useDispatch } from 'react-redux';
 
 const TrumpApp = () => {
-  const [tweets, dispatch] = useReducer(tweetsReducer, {
-    isLoading: false,
-    isError: false,
-    data: 'data not loaded'
-  });
+  const dispatch = useDispatch();
 
   useEffect(() => {  
     let didCancel = false;
     
-    const fetchData = async () => {
+    const fetchData = () => {
       dispatch({ type: 'FETCH_TWEETS_INIT' });
       try {
-        const tweets = await csv('../trump_r/tweets_cleaned.csv');
         if (!didCancel) {
           dispatch({ type: 'FETCH_TWEETS_SUCCESS', payload: tweets });
         }
@@ -35,11 +29,10 @@ const TrumpApp = () => {
   }, []);
 
   return (
-    <TrumpContext.Provider value={{ tweets, dispatch }}>
-      <h1>Hello World</h1>
-    </TrumpContext.Provider>
+    <TrumpApp>
+      <h1>hello world</h1>
+    </TrumpApp>
   );
 }
-
 
 export default TrumpApp;
