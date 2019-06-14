@@ -13,6 +13,10 @@ sentiment <- sentiment(sentences) %>%
 
 write_csv(sentiment, './tweets_cleaned.csv')
 
+sentiment %>%
+  toJSON() %>%
+  write_lines('./tweets_cleaned.json')
+
 
 sentimentWords <- extract_emotion_terms(sentences)
 emotion <- emotion(sentences)
