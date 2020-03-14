@@ -10,7 +10,7 @@
     "test": "jest --config=jest.config.json"
   },
   "dependencies": {
-    "acorn": "^6.1.1",
+    "acorn": "^6.4.1",
     "axios": "^0.19.0",
     "d3": "^5.9.2",
     "enzyme": "^3.10.0",
